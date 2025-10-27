@@ -45,7 +45,7 @@ class MovableObject {
         setInterval(() => {
             this.x -= this.speed;  // bewegt sich langsam nach links
             if (this.x + this.width < 0) {
-                this.x = 1800; // springt wieder nach rechts (Canvas-Breite)
+                this.x = 2400; // springt wieder nach rechts (Canvas-Breite)
             }
         }, 1000 / 60);
     }
