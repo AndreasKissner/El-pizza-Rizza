@@ -13,13 +13,13 @@ class StatusBarBottle extends DrawableObject {
         super();
         this.loadImages(this.IMAGES);
         this.x = 20;
-        this.y = 70;
+        this.y = 60;
         this.width = 170;
         this.height = 60;
 
         // 🔹 Sofort sichtbares Startbild
         this.img = new Image();
-        this.img.src = this.IMAGES[5];
+        this.img.src = this.IMAGES[0];
 
         // 🔹 Dann später richtigen Cache nutzen
       /*   setTimeout(() => this.setPercentage(100), 100); */

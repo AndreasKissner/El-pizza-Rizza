@@ -8,6 +8,7 @@ class World {
     isHit = false;
     statusBar = new StatusBar();
     statusBarBottle = new StatusBarBottle();
+    statusBarCoins = new StatusBarCoins();
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -50,9 +51,10 @@ class World {
         this.ctx.restore(); // Kamera zurücksetzen
 
         // ===== HUD / Statusbar =====
-            this.addToMap(this.statusBar);
+        this.addToMap(this.statusBar);
         this.addToMap(this.statusBarBottle);
-    
+        this.addToMap(this.statusBarCoins);
+
 
 
         //DRaw wird immer wieder Aufgerufen
