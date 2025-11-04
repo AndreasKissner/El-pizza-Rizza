@@ -36,33 +36,35 @@ class World {
         }, 100);
     }
 
-   draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-   
-    // ===== Welt zeichnen =====
-    this.ctx.save(); // Zustand merken
-    this.ctx.translate(this.camera_x, 0);
-    this.addObjectsToMap(this.level.backgroundsObjects);
-    this.addObjectsToMap(this.level.platform);
-    this.addObjectsToMap(this.level.clouds);
-    this.addObjectsToMap(this.level.enemies);
-    this.addToMap(this.character);
-    this.ctx.restore(); // Kamera zurücksetzen
+    draw() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // ===== HUD / Statusbar =====
-    this.addToMap(this.statusBar);
-    this.addToMap(this.statusBarBottle);
+        // ===== Welt zeichnen =====
+        this.ctx.save(); // Zustand merken
+        this.ctx.translate(this.camera_x, 0);
+        this.addObjectsToMap(this.level.backgroundsObjects);
+        this.addObjectsToMap(this.level.platform);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.enemies);
+        this.addToMap(this.character);
+        this.ctx.restore(); // Kamera zurücksetzen
 
-    //DRaw wird immer wieder Aufgerufen
-    requestAnimationFrame(() => {
-        this.draw();
-    });
-    // Oder so:   let self = this;
-    //requestAnimationFrame(function () {
-    //    self.draw();
-    //    });
-}
- 
+        // ===== HUD / Statusbar =====
+            this.addToMap(this.statusBar);
+        this.addToMap(this.statusBarBottle);
+    
+
+
+        //DRaw wird immer wieder Aufgerufen
+        requestAnimationFrame(() => {
+            this.draw();
+        });
+        // Oder so:   let self = this;
+        //requestAnimationFrame(function () {
+        //    self.draw();
+        //    });
+    }
+
 
     addObjectsToMap(objects) {
         objects.forEach(o => {

@@ -10,21 +10,27 @@ class StatusBar extends DrawableObject {
 
     percentage = 100;
 
-    constructor() {
-        super();
-        this.loadImages(this.IMAGES);
-        this.x = 20;
-        this.y = 10;
-        this.width = 170;
-        this.height = 60;
+   constructor() {
+  super();
+  this.loadImages(this.IMAGES);
+  this.x = 20;
+  this.y = 10;
+  this.width = 170;
+  this.height = 60;
 
-        // 🔹 Sofort sichtbares Startbild
-        this.img = new Image();
-        this.img.src = this.IMAGES[5];
+  // 🔹 Sofort sichtbares Bild
+  this.img = new Image();
+  this.img.src = this.IMAGES[5];
 
-        // 🔹 Dann später richtigen Cache nutzen
-        setTimeout(() => this.setPercentage(100), 100);
+  // 🔹 Versuche alle 50 ms, den Cache zu benutzen, bis es klappt
+  const checkCache = setInterval(() => {
+    if (this.imageCache[this.IMAGES[5]]) {
+      this.setPercentage(100);
+      clearInterval(checkCache);
     }
+  }, 50);
+}
+
 
     setPercentage(percentage) {
         this.percentage = percentage;
@@ -48,4 +54,3 @@ class StatusBar extends DrawableObject {
         }
     }
 }
- 
