@@ -3,7 +3,6 @@ class MovableObject extends DrawableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 2.5;
-    otherDirection = false;
     energy = 100;
     lastHit = 0;
 
@@ -28,15 +27,6 @@ class MovableObject extends DrawableObject {
         return this.y < 230;
     }
 
-    drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken || this instanceof MiniChicken || this instanceof Endboss) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
 
     isColliding(mo) {
         return (
