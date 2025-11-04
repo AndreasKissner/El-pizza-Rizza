@@ -9,6 +9,7 @@ class World {
     statusBar = new StatusBar();
     statusBarBottle = new StatusBarBottle();
     statusBarCoins = new StatusBarCoins();
+     throwableObjects = [new ThrowableObject()];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -47,6 +48,7 @@ class World {
         this.addObjectsToMap(this.level.platform);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.throwableObjects); 
         this.addToMap(this.character);
         this.ctx.restore(); // Kamera zurücksetzen
 
