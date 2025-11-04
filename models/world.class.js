@@ -5,7 +5,11 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-     isHit = false;
+    isHit = false;
+    statusBar = new StatusBar();
+    statusBarBottle = new StatusBarBottle();
+    statusBarCoins = new StatusBarCoins();
+     throwableObjects = [new ThrowableObject()];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -20,28 +24,39 @@ class World {
         this.character.world = this;
     }
 
-    checkCollisions(){
+    checkCollisions() {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
-              if(  this.character.isColliding(enemy)){
-              /*   console.log("Collison with", enemy); */
-                this.character.hit();
-              
-                console.log("Collison with Enemys, energy", this.character.energy);
-              }
+                if (this.character.isColliding(enemy)) {
+                    /*   console.log("Collison with", enemy); */
+                    this.character.hit();
+                    this.statusBar.setPercentage(this.character.energy);
+
+                    console.log("Collison with Enemys, energy", this.character.energy);
+                }
             });
-        }, 200);
+        }, 100);
     }
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // ===== Welt zeichnen =====
+        this.ctx.save(); // Zustand merken
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.backgroundsObjects);
-        this.addToMap(this.character);
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.platform);
-        this.ctx.translate(- this.camera_x, 0);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.throwableObjects); 
+        this.addToMap(this.character);
+        this.ctx.restore(); // Kamera zurücksetzen
+
+        // ===== HUD / Statusbar =====
+        this.addToMap(this.statusBar);
+        this.addToMap(this.statusBarBottle);
+        this.addToMap(this.statusBarCoins);
+
 
 
         //DRaw wird immer wieder Aufgerufen
@@ -53,6 +68,7 @@ class World {
         //    self.draw();
         //    });
     }
+
 
     addObjectsToMap(objects) {
         objects.forEach(o => {
