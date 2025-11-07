@@ -82,7 +82,7 @@ class Character extends MovableObject {
             }
 
             //JUMP HOCH
-            if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+            if (this.world.keyboard.SPACE && !this.isAboveGround()) {//Throobject  should always false
                 this.jump();
                 this.jump_effect.play();
             }
