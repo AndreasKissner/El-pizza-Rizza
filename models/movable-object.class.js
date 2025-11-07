@@ -24,7 +24,11 @@ class MovableObject extends DrawableObject {
 
 
     isAboveGround() {
-        return this.y < 230;
+        if(this instanceof ThrowableObject){ // Throwable obcect should alway fall
+            return true
+        } else{
+              return this.y < 230;
+        }
     }
 
 
@@ -45,7 +49,7 @@ class MovableObject extends DrawableObject {
             this.lastHit = new Date().getTime();
         }
     }
-
+ 
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit; // differenz in millisek
         timepassed = timepassed / 1000; // Differenz in sek
