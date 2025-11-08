@@ -3,7 +3,7 @@ class Level{
     clouds;
     backgroundsObjects;
     
-    level_end_x  = 6400 ;
+    level_end_x  = 4300 ;
 
 
 
