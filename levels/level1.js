@@ -74,6 +74,32 @@ const level1 = new Level(
         new Platform(3100, 200)
     ],
 
+    [
+        new Coin(430, 180),
+        new Coin(510, 130),
+        new Coin(600, 180),
+
+        new Coin(1230, 180),
+        new Coin(1370, 180),
+        new Coin(1310, 110),
+
+        new Coin(1800, 220),
+        new Coin(1900, 170),
+        new Coin(2000, 170),
+        new Coin(2100, 220),
+
+        new Coin(2635, 120),
+        new Coin(2710, 90),
+        new Coin(2770, 120),
+
+        new Coin(3200, 50),
+        new Coin(3300, 20),
+        new Coin(3400, 50),
+        new Coin(3500, 100)
+       
+
+    ],
+
     new Audio('./audi/musik.mp3'),
 
 )
