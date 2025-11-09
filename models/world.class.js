@@ -22,6 +22,7 @@ class World {
 
     setWorld() {
         this.character.world = this;
+        
     }
 
     run() {
@@ -34,7 +35,7 @@ class World {
 
     checkThrowObjects(){
         if(this.keyboard.D){
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 95);
             this.throwableObjects.push(bottle);
         }
     }
@@ -58,6 +59,7 @@ class World {
         this.addObjectsToMap(this.level.platform);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.coins );
         this.addObjectsToMap(this.throwableObjects); 
         this.addToMap(this.character);
         this.ctx.restore(); // Kamera zurücksetzen
@@ -67,6 +69,9 @@ class World {
         this.addToMap(this.statusBarBottle);
         this.addToMap(this.statusBarCoins);
 
+  this.ctx.font = "20px Arial";
+    this.ctx.fillStyle = "yellow";
+    this.ctx.fillText(`x: ${Math.round(this.character.x)}  y: ${Math.round(this.character.y)}`, 20, 40);
 
 
         //DRaw wird immer wieder Aufgerufen
@@ -114,5 +119,6 @@ class World {
     //requestAnimationFrame(function () {
     //    self.draw();
     //    });
+     
 
-}
+}  

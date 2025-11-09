@@ -20,9 +20,8 @@ const level1 = new Level(
         new Cloud(3000),
         new Cloud(3700),
         new Cloud(4300),
-        new Cloud(5000),
-        new Cloud(5700),
-        new Cloud(6300),
+
+
     ],
     [
         new BackgroundObject('img/5_background/layers/air.png', -719),
@@ -64,30 +63,54 @@ const level1 = new Level(
         new BackgroundObject('img/5_background/layers/3_third_layer/1.png', 719 * 6),
         new BackgroundObject('img/5_background/layers/2_second_layer/1.png', 719 * 6),
         new BackgroundObject('img/5_background/layers/1_first_layer/1.png', 719 * 6),
-
-        new BackgroundObject('img/5_background/layers/air.png', 719 * 7),
-        new BackgroundObject('img/5_background/layers/3_third_layer/2.png', 719 * 7),
-        new BackgroundObject('img/5_background/layers/2_second_layer/2.png', 719 * 7),
-        new BackgroundObject('img/5_background/layers/1_first_layer/2.png', 719 * 7),
-
-        new BackgroundObject('img/5_background/layers/air.png', 719 * 8),
-        new BackgroundObject('img/5_background/layers/3_third_layer/1.png', 719 * 8),
-        new BackgroundObject('img/5_background/layers/2_second_layer/1.png', 719 * 8),
-        new BackgroundObject('img/5_background/layers/1_first_layer/1.png', 719 * 8),
-
-        new BackgroundObject('img/5_background/layers/air.png', 719 * 9),
-        new BackgroundObject('img/5_background/layers/3_third_layer/2.png', 719 * 9),
-        new BackgroundObject('img/5_background/layers/2_second_layer/2.png', 719 * 9),
-        new BackgroundObject('img/5_background/layers/1_first_layer/2.png', 719 * 9),
     ],
 
     [
-        new Platform(300, 300),
-        new Platform(600, 200),
-        new Platform(1000, 200),
-        new Platform(1400, 300),
+        new Platform(500, 280),
+        new Platform(800, 220),
+        new Platform(1300, 280),
+        new Platform(2400, 280),
+        new Platform(2700, 220),
+        new Platform(3100, 200)
+    ],
+
+    [
+        new Coin(430, 180),
+        new Coin(510, 130),
+        new Coin(600, 180),
+
+        new Coin(1230, 180),
+        new Coin(1370, 180),
+        new Coin(1310, 110),
+
+        new Coin(1800, 220),
+        new Coin(1900, 170),
+        new Coin(2000, 170),
+        new Coin(2100, 220),
+
+        new Coin(2635, 120),
+        new Coin(2710, 90),
+        new Coin(2770, 120),
+
+        new Coin(3200, 50),
+        new Coin(3300, 20),
+        new Coin(3400, 50),
+        new Coin(3500, 100)
+       
 
     ],
 
-    new Audio('')
+    new Audio('./audi/musik.mp3'),
+
 )
+
+// 👇 HIER kommt dein Map-Längen-Code:
+let backgrounds = level1.backgroundsObjects;
+
+// Sicherstellen, dass die Hintergrundobjekte existieren:
+if (backgrounds && backgrounds.length > 0) {
+    let firstX = Math.min(...backgrounds.map(b => b.x));
+    let lastX = Math.max(...backgrounds.map(b => b.x));
+    let mapWidth = lastX - firstX + 719; // 719 = Breite eines Abschnitts
+    console.log("Map-Länge:", mapWidth, "Pixel");
+} 
