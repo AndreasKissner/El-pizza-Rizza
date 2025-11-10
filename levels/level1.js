@@ -95,11 +95,25 @@ const level1 = new Level(
         new Coin(3200, 50),
         new Coin(3300, 20),
         new Coin(3400, 50),
-        new Coin(3500, 100)
-       
+        new Coin(3500, 100),
+
 
     ],
 
+       [ // ✅ Bottles-Array jetzt extra Parameter
+        new Bottle(800, 180),
+        new Bottle(900, 180),
+
+        new Bottle(1310, 240),
+        new Bottle(1410, 240),
+
+        new Bottle(1635, 100),
+        new Bottle(1735, 100),
+
+        new Bottle(2375, 230),
+        new Bottle(2525, 230)
+    ], 
+ 
     new Audio('./audi/musik.mp3'),
 
 )
