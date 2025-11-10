@@ -11,14 +11,16 @@ class World {
     statusBarCoins = new StatusBarCoins();
     throwableObjects = [];
 
-    constructor(canvas, keyboard) {
-        this.ctx = canvas.getContext('2d');
-        this.canvas = canvas;
-        this.keyboard = keyboard;
-        this.draw();
-        this.setWorld();
-        this.run();
-    }
+  constructor(canvas, keyboard) {
+    this.ctx = canvas.getContext('2d');
+    this.canvas = canvas;
+    this.keyboard = keyboard;
+
+    this.setWorld(); // ⬅️ Welt zuerst setzen
+    this.draw();     // ⬅️ dann zeichnen
+    this.run();
+}
+
 
     setWorld() {
         this.character.world = this;
@@ -49,20 +51,33 @@ class World {
             });
     }
 
-    draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  draw() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // ===== Welt zeichnen =====
-        this.ctx.save(); // Zustand merken
-        this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToMap(this.level.backgroundsObjects);
-        this.addObjectsToMap(this.level.platform);
-        this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.coins );
-        this.addObjectsToMap(this.throwableObjects); 
-        this.addToMap(this.character);
-        this.ctx.restore(); // Kamera zurücksetzen
+    // ===== Welt zeichnen =====
+    this.ctx.save(); // Zustand merken
+    this.ctx.translate(this.camera_x, 0);
+
+    // 🧩 DEBUG: Überprüfen, ob alles Arrays sind
+    console.log("Level-Typen:", {
+        backgroundsObjects: Array.isArray(this.level.backgroundsObjects),
+        platform: Array.isArray(this.level.platform),
+        clouds: Array.isArray(this.level.clouds),
+        enemies: Array.isArray(this.level.enemies),
+        coins: Array.isArray(this.level.coins),
+        bottle: Array.isArray(this.level.bottle),
+    });
+
+    this.addObjectsToMap(this.level.backgroundsObjects);
+    this.addObjectsToMap(this.level.platform);
+    this.addObjectsToMap(this.level.clouds);
+    this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.level.coins);
+    this.addObjectsToMap(this.level.bottle);
+    this.addObjectsToMap(this.throwableObjects); 
+    this.addToMap(this.character);
+    this.ctx.restore(); // Kamera zurücksetzen
+
 
         // ===== HUD / Statusbar =====
         this.addToMap(this.statusBar);
